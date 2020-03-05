@@ -24,16 +24,17 @@ const APPEARANCES = {
   SECONDARY: 'secondary',
   SECONDARY_OUTLINE: 'secondaryOutline',
   TERTIARY: 'tertiary',
-  OUTLINE: 'outline',
+  OUTLINE: 'outline'
 };
 
 const SIZES = {
   SMALL: 'small',
-  MEDIUM: 'medium',
+  MEDIUM: 'medium'
 };
 
 const StyledButton = styled.button`
-  border: 0;
+  border: 10px solid red;
+  font-size: 20px;
   border-radius: 3em;
   cursor: pointer;
   display: inline-block;
@@ -50,9 +51,6 @@ const StyledButton = styled.button`
   opacity: 1;
   margin: 0;
   background: transparent;
-
-
-  font-size: ${props => (props.size === SIZES.SMALL ? typography.size.s1 : typography.size.s2)}px;
   font-weight: ${typography.weight.extrabold};
   line-height: 1;
 
@@ -270,10 +268,16 @@ const StyledButton = styled.button`
           color: ${color.lightest};
         }
         &:focus {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.4)} 0 1px 9px 2px;
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(
+        color.primary,
+        0.4
+      )} 0 1px 9px 2px;
         }
         &:focus:hover {
-          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(color.primary, 0.2)} 0 8px 18px 0px;
+          box-shadow: ${color.primary} 0 0 0 1px inset, ${rgba(
+        color.primary,
+        0.2
+      )} 0 8px 18px 0px;
         }
       `};
 
@@ -310,9 +314,11 @@ const ButtonLink = StyledButton.withComponent('a');
 const applyStyle = ButtonWrapper => {
   return (
     ButtonWrapper &&
-    StyledButton.withComponent(({ containsIcon, isLoading, isUnclickable, ...rest }) => (
-      <ButtonWrapper {...rest} />
-    ))
+    StyledButton.withComponent(
+      ({ containsIcon, isLoading, isUnclickable, ...rest }) => (
+        <ButtonWrapper {...rest} />
+      )
+    )
   );
 };
 
@@ -332,7 +338,9 @@ export function Button({
     </Fragment>
   );
 
-  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [ButtonWrapper]);
+  const StyledButtonWrapper = React.useMemo(() => applyStyle(ButtonWrapper), [
+    ButtonWrapper
+  ]);
 
   let SelectedButton = StyledButton;
   if (ButtonWrapper) {
@@ -370,7 +378,7 @@ Button.propTypes = {
   */
   containsIcon: PropTypes.bool,
   size: PropTypes.oneOf(Object.values(SIZES)),
-  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
+  ButtonWrapper: PropTypes.oneOfType([PropTypes.func, PropTypes.object])
 };
 
 Button.defaultProps = {
@@ -382,5 +390,5 @@ Button.defaultProps = {
   isUnclickable: false,
   containsIcon: false,
   size: SIZES.MEDIUM,
-  ButtonWrapper: undefined,
+  ButtonWrapper: undefined
 };
