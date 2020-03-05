@@ -11,6 +11,8 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
+
+      - run: npx chromatic test --app-code=k9tg2iuhbth  --exit-zero-on-changes
 workflows:
   build-and-test:
     jobs:
