@@ -3,10 +3,12 @@ import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { Avatar } from './Avatar';
 
 export default {
-  title: 'Design System|Avatar',
+  title: 'Design System | Avatar',
 
   parameters: {
-    component: Avatar
+    component: Avatar,
+    componentSubtitle:
+      'Displays an image that represents a user or organization'
   }
 };
 
@@ -84,4 +86,8 @@ export const knobs = () => (
 
 knobs.story = {
   decorators: [withKnobs]
+};
+
+sizes.story = {
+  parameters: { docs: { storyDescription: '4 sizes are supported.' } }
 };
